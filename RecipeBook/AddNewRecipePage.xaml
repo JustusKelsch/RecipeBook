@@ -2,11 +2,42 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RecipeBook.AddNewRecipePage"
-             Title="AddRecipePage">
+             Title="Add a New Recipe">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Text="Recipe Name: "
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   Grid.Column="1"
+                   />
+            <Entry x:Name="RecipeNameEntry"
+                   Grid.Column="2" 
+                   MinimumWidthRequest="200" 
+                   />
+            <Label Text="Ingredients: "
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   Grid.Column="1"
+                   Grid.Row="2" 
+                   />
+            <Entry x:Name="IngredientsEntry"
+                   Grid.Column="2" 
+                   Grid.Row="2"
+                   MinimumWidthRequest="200" 
+                   />
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>
