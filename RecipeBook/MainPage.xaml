@@ -4,7 +4,7 @@
              x:Class="RecipeBook.MainPage">
 
     <StackLayout>
-        <CollectionView ItemsSource="{Binding Recipes}"
+        <CollectionView ItemsSource="{Binding RecipeCollection}"
                         SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>

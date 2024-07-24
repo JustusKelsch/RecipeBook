@@ -10,13 +10,34 @@ namespace RecipeBookLibrary.ViewModels {
 
         private List<RecipeModel> recipes = new List<RecipeModel>();
 
+        public RecipeViewModel() {
+
+            recipes.Add(new RecipeModel {
+                RecipeName = "Bread",
+                Ingredients = ["Sugar1", "Salt"],
+                PreparationInstructions = ["Cool"],
+            });
+            recipes.Add(new RecipeModel {
+                RecipeName = "Bread",
+                Ingredients = ["Sugar"],
+                PreparationInstructions = ["Cool"],
+            });
+
+        }
+
         public void AddRecipe(RecipeModel recipe) {
 
             recipes.Add(recipe);
 
         }
 
-        public List<RecipeModel> Recipes { get; set; } = new List<RecipeModel>();
+        public List<RecipeModel> RecipeCollection {
+
+            get { return recipes; }
+            set { recipes = value; }
+
+        }
 
     }
+
 }
