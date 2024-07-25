@@ -4,13 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RecipeBookLibrary.Models {
     public class RecipeModel {
 
+        MeasurementOptions measurements = new MeasurementOptions();
         public string RecipeName { get; set; }
         public ObservableCollection<string> Ingredients { get; set; } = new ObservableCollection<string>();
-        public ObservableCollection<string> PreparationInstructions { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<string> Directions { get; set; } = new ObservableCollection<string>();
 
         public ObservableCollection<string> IngredientCollection {
 
@@ -19,10 +21,16 @@ namespace RecipeBookLibrary.Models {
 
         }
 
-        public ObservableCollection<string> PreparationInstructionsCollection {
+        public ObservableCollection<string> DirectionsCollection {
 
-            get { return PreparationInstructions; }
-            set { PreparationInstructions = value; }
+            get { return Directions; }
+            set { Directions = value; }
+
+        }
+
+        public List<string> MeasurementCollection {
+
+            get { return measurements.measurementsOptions; }
 
         }
     }

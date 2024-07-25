@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecipeBookLibrary.ViewModels {
     public class RecipeViewModel {
+        MeasurementOptions test = new MeasurementOptions();
 
         private List<RecipeModel> recipes = new List<RecipeModel>();
 
@@ -15,12 +16,12 @@ namespace RecipeBookLibrary.ViewModels {
             recipes.Add(new RecipeModel {
                 RecipeName = "Bread",
                 Ingredients = ["Sugar1", "Salt"],
-                PreparationInstructions = ["Cool"],
+                Directions = ["Cool"],
             });
             recipes.Add(new RecipeModel {
                 RecipeName = "Bread",
                 Ingredients = ["Sugar"],
-                PreparationInstructions = ["Cool"],
+                Directions = ["Cool"],
             });
 
         }
