@@ -23,31 +23,33 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="50" />
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label Text="Recipe Name: "
+            
+            <StackLayout Grid.Column="1" 
+                         Grid.Row="1"
+                         >
+                <Label Text="Recipe Name: "
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
-                   Grid.Column="1"
-                   Grid.Row="0"
                    />
-            <Entry x:Name="RecipeNameEntry"
-                   MinimumWidthRequest="200" 
-                   Grid.Column="1" 
-                   Grid.Row="0"
-                   />
-
+                <Entry x:Name="RecipeNameEntry"
+                       WidthRequest="300"
+                       />
+            </StackLayout>
             <StackLayout Grid.Column="1"
-                         Grid.Row="1">
+                         Grid.Row="2"
+                         Margin="25"
+                         >
                 <Label Text="Ingredient: "
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    />
+                <Entry x:Name="IngredientsAmountEntry"
+                       WidthRequest="300"
+                       Keyboard="Numeric"
+                       />
                 <Picker x:Name="MeasurmentPicker"
                         Title="Select a Measurment"
                         ItemsSource="{Binding MeasurementCollection}"
@@ -56,8 +58,8 @@
                         />
 
                 <Entry x:Name="IngredientsEntry"
-                 MinimumWidthRequest="200" 
-                 />
+                       WidthRequest="300"
+                       />
                 <Button x:Name="AddIngredientButton"
                   Text="Add Ingredient"
                   WidthRequest="300"
@@ -66,71 +68,73 @@
                   />
             </StackLayout>
 
-            <Label Text="Directions: "
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center"
-                   Grid.Column="1"
-                   Grid.Row="3" 
-                   />
-            <Entry x:Name="DirectionsEntry"
-                   Grid.Column="1" 
-                   Grid.Row="3"
-                   MinimumWidthRequest="200" 
-                   />
-            <Button x:Name="AddDirectionsButton"
+            <StackLayout Grid.Column="1" 
+                         Grid.Row="3"
+                         Margin="25"
+                         >
+                <Label Text="Direction: "
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center"
+                       />
+                <Entry x:Name="DirectionsEntry"
+                       WidthRequest="300"
+                       />
+                <Button x:Name="AddDirectionsButton"
                     Text="Add Directions"
-                    Grid.Column="1" 
-                    Grid.Row="4"
                     WidthRequest="300"
                     HorizontalOptions="Start"
                     Clicked="AddDirectionsButton_Clicked"
                     />
+            </StackLayout>
+            <StackLayout Grid.Column="1"
+                         Grid.Row="4"
+                         Margin="25"
+                         >
+                <Label Text="Ingredients"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       />
+                <CollectionView ItemsSource="{Binding IngredientCollection}"
+                                MaximumWidthRequest="300"
+                                MinimumHeightRequest="50"
+                                Background="LightGray"
+                                >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="{Binding .}"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-            <Label Text="Ingredients"
-                   Grid.Column="1"
-                   Grid.Row="5"
-                   Grid.ColumnSpan="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"/>
-            <CollectionView ItemsSource="{Binding IngredientCollection}"
-                            Grid.Column="1"
-                            Grid.Row="6"
-                            Grid.ColumnSpan="2"
-                            MaximumWidthRequest="500">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding StringFormat='* {0}'}"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <Label Text="Directions"
-                   Grid.Column="1"
-                   Grid.Row="7"
-                   Grid.ColumnSpan="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"/>
-            <CollectionView ItemsSource="{Binding DirectionsCollection}"
-                            Grid.Column="1"
-                            Grid.Row="8"
-                            Grid.ColumnSpan="2"
-                            MaximumWidthRequest="500">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding .}"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <Button x:Name="AddRecipeButton"
-                    Text="Add Recipe"
-                    Grid.Column="1"
-                    Grid.Row="10"
-                    Grid.ColumnSpan="2"/>
+                <Label Text="Directions"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       />
+                <CollectionView ItemsSource="{Binding DirectionsCollection}"
+                                MaximumWidthRequest="300"
+                                MinimumHeightRequest="50"
+                                Background="LightGray"
+                                >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="{Binding .}"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <StackLayout Grid.Column="1"
+                         Grid.Row="5"
+                         Margin="25"
+                         >
+                <Button x:Name="AddRecipeButton"
+                        Text="Add Recipe"
+                        WidthRequest="300"
+                        />
+            </StackLayout>
 
         </Grid>
     </VerticalStackLayout>

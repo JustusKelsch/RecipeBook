@@ -9,7 +9,7 @@ namespace RecipeBook;
 public partial class AddNewRecipePage : ContentPage {
 
     private RecipeModel recipe = new RecipeModel();
-    private string measurement = String.Empty;
+    private string measurement = string.Empty;
     public AddNewRecipePage()
 	{
 		InitializeComponent();
@@ -19,7 +19,13 @@ public partial class AddNewRecipePage : ContentPage {
 
     private void AddIngredientButton_Clicked(object sender, EventArgs e) {
 
-        if (string.IsNullOrEmpty(measurement)) {
+        bool isNum = int.TryParse(IngredientsAmountEntry.Text, out int result);
+        if (!isNum || string.IsNullOrWhiteSpace(IngredientsAmountEntry.Text)) {
+
+            DisplayAlert("Amount must be a number", "Please enter a number.", "OK");
+
+        }
+        else if (string.IsNullOrWhiteSpace(measurement)) {
 
             DisplayAlert("No Measurement Type", "Please select a Measurement Type.", "OK");
 
@@ -31,8 +37,9 @@ public partial class AddNewRecipePage : ContentPage {
         }
         else {
 
-            recipe.Ingredients.Add(measurement + " " + IngredientsEntry.Text);
+            recipe.Ingredients.Add(result + " " + measurement + " " + IngredientsEntry.Text);
             IngredientsEntry.Text = string.Empty;
+            IngredientsAmountEntry.Text = string.Empty;
 
         }
 
