@@ -14,7 +14,7 @@ namespace RecipeBookLibrary {
             measurementsOptions.Add("Cup(s)");
             measurementsOptions.Add("Tbsp(s)");
             measurementsOptions.Add("Tsp(s)");
-            measurementsOptions.Add("oz");
+            measurementsOptions.Add("ounce(s)");
             measurementsOptions.Add("gram(s)");
 
         }

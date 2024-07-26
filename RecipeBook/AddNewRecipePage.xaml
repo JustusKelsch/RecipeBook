@@ -3,14 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RecipeBook.AddNewRecipePage"
              Title="Add a New Recipe">
-    <VerticalStackLayout>
+    <ScrollView>
 
-        <Grid>
-            
-            
-            
-        </Grid>
-        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -29,12 +23,14 @@
             
             <StackLayout Grid.Column="1" 
                          Grid.Row="1"
+                         Margin="25"
                          >
                 <Label Text="Recipe Name: "
                    VerticalOptions="Center" 
-                   HorizontalOptions="Center"
                    />
                 <Entry x:Name="RecipeNameEntry"
+                       Placeholder="Recipe Name"
+                       PlaceholderColor="Gray"
                        WidthRequest="300"
                        />
             </StackLayout>
@@ -44,9 +40,10 @@
                          >
                 <Label Text="Ingredient: "
                    VerticalOptions="Center" 
-                   HorizontalOptions="Center"
                    />
                 <Entry x:Name="IngredientsAmountEntry"
+                       Placeholder="Amount"
+                       PlaceholderColor="Gray"
                        WidthRequest="300"
                        Keyboard="Numeric"
                        />
@@ -54,16 +51,19 @@
                         Title="Select a Measurment"
                         ItemsSource="{Binding MeasurementCollection}"
                         ItemDisplayBinding="{Binding .}"
+                        SelectedItem="{Binding selectedMeasurement}"
                         SelectedIndexChanged="MeasurmentPicker_SelectedIndexChanged"
                         />
 
                 <Entry x:Name="IngredientsEntry"
+                       Placeholder="Ingredient"
+                       PlaceholderColor="Gray"
                        WidthRequest="300"
                        />
                 <Button x:Name="AddIngredientButton"
                   Text="Add Ingredient"
-                  WidthRequest="300"
-                  HorizontalOptions="Start"
+                  WidthRequest="125"
+                  HorizontalOptions="Center"
                   Clicked="AddIngredientButton_Clicked"
                   />
             </StackLayout>
@@ -74,15 +74,16 @@
                          >
                 <Label Text="Direction: "
                        VerticalOptions="Center" 
-                       HorizontalOptions="Center"
                        />
                 <Entry x:Name="DirectionsEntry"
+                       Placeholder="Direction"
+                       PlaceholderColor="Gray"
                        WidthRequest="300"
                        />
                 <Button x:Name="AddDirectionsButton"
                     Text="Add Directions"
-                    WidthRequest="300"
-                    HorizontalOptions="Start"
+                    WidthRequest="125"
+                    HorizontalOptions="Center"
                     Clicked="AddDirectionsButton_Clicked"
                     />
             </StackLayout>
@@ -99,11 +100,15 @@
                                 MinimumHeightRequest="50"
                                 Background="LightGray"
                                 >
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout>
-                                <Label Text="{Binding .}"/>
-                            </StackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding .}"
+                                       VerticalTextAlignment="Center"
+                                       MaximumWidthRequest="300"
+                                       />
+                            </HorizontalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -133,9 +138,10 @@
                 <Button x:Name="AddRecipeButton"
                         Text="Add Recipe"
                         WidthRequest="300"
+                        Clicked="AddRecipeButton_Clicked"
                         />
             </StackLayout>
 
         </Grid>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -1,17 +1,25 @@
-﻿using RecipeBookLibrary.ViewModels;
+﻿using RecipeBookLibrary;
+using RecipeBookLibrary.Models;
+using RecipeBookLibrary.ViewModels;
 
 namespace RecipeBook {
-    public partial class MainPage : ContentPage {
-        int count = 0;
+    public partial class MainPage : ContentPage, ISaveRecipe {
+
+        RecipeViewModel recipes = new RecipeViewModel();
 
         public MainPage() {
             InitializeComponent();
-            BindingContext = new RecipeViewModel();
+            BindingContext = recipes;
+        }
+
+        public void SaveRecipe(RecipeModel recipe) {
+            recipes.Add(recipe);
         }
 
         private void AddNewRecipeButton_Clicked(object sender, EventArgs e) {
 
-            App.Current.MainPage = new NavigationPage(new AddNewRecipePage());
+            AddNewRecipePage recipePage = new AddNewRecipePage(this);
+            App.Current.MainPage = recipePage;
 
         }
     }
