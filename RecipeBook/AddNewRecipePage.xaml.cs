@@ -11,12 +11,11 @@ public partial class AddNewRecipePage : ContentPage {
 
     private RecipeModel recipe = new RecipeModel();
     private string measurement = string.Empty;
-    ISaveRecipe _parent;
-    public AddNewRecipePage(ISaveRecipe parent)
+
+    public AddNewRecipePage()
 	{
 		InitializeComponent();
         BindingContext = recipe;
-        _parent = parent;
 
     }
 
@@ -101,8 +100,8 @@ public partial class AddNewRecipePage : ContentPage {
         else {
 
             recipe.RecipeName = RecipeNameEntry.Text;
-            _parent.SaveRecipe(recipe);
-            App.Current.MainPage = (Page?)_parent;
+            // TODO - Add new recipe to a DataBase
+            Navigation.PopAsync();
 
         }
 

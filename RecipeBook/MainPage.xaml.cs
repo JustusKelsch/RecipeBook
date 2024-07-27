@@ -9,6 +9,7 @@ namespace RecipeBook {
 
         public MainPage() {
             InitializeComponent();
+            // TODO - Grab all recipes from a DataBase
             BindingContext = recipes;
         }
 
@@ -18,8 +19,8 @@ namespace RecipeBook {
 
         private void AddNewRecipeButton_Clicked(object sender, EventArgs e) {
 
-            AddNewRecipePage recipePage = new AddNewRecipePage(this);
-            App.Current.MainPage = recipePage;
+            AddNewRecipePage recipePage = new AddNewRecipePage();
+            Navigation.PushAsync(recipePage);
 
         }
     }
