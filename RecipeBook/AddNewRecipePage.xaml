@@ -104,7 +104,15 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <HorizontalStackLayout>
-                                <Label Text="{Binding .}"
+                                <Label Text="{Binding Amount}"
+                                       VerticalTextAlignment="Center"
+                                       MaximumWidthRequest="300"
+                                       />
+                                <Label Text="{Binding Measurement, StringFormat=' {0}'}"
+                                       VerticalTextAlignment="Center"
+                                       MaximumWidthRequest="300"
+                                       />
+                                <Label Text="{Binding Ingredient, StringFormat=' {0}'}"
                                        VerticalTextAlignment="Center"
                                        MaximumWidthRequest="300"
                                        />
@@ -139,6 +147,12 @@
                         Text="Add Recipe"
                         WidthRequest="300"
                         Clicked="AddRecipeButton_Clicked"
+                        />
+                <Button x:Name="CancelAddRecipeButton"
+                        Text="Cancel"
+                        WidthRequest="125"
+                        Margin="10 0 0 0"
+                        Clicked="CancelAddRecipeButton_Clicked"
                         />
             </StackLayout>
 

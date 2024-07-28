@@ -39,14 +39,23 @@ public partial class AddNewRecipePage : ContentPage {
         }
         else {
 
-            
+            string formattedMeasurement = measurement.Substring(0, measurement.Length - 3);
             if (result == 1) {
-                recipe.Ingredients.Add($"{IngredientsAmountEntry.Text} {measurement.Substring(0, measurement.Length - 3)} {IngredientsEntry.Text}");
+                recipe.Ingredients.Add(new IngredientModel {
+                    Amount = result,
+                    Measurement = formattedMeasurement,
+                    Ingredient = IngredientsEntry.Text
+
+                });
 
             }
             else {
+                recipe.Ingredients.Add(new IngredientModel {
+                    Amount = result,
+                    Measurement = $"{formattedMeasurement}s",
+                    Ingredient = IngredientsEntry.Text
 
-                recipe.Ingredients.Add($"{IngredientsAmountEntry.Text} {measurement.Substring(0, measurement.Length - 3)}s {IngredientsEntry.Text}");
+                });
 
             }
 
@@ -106,4 +115,15 @@ public partial class AddNewRecipePage : ContentPage {
         }
 
     }
+
+    private async void CancelAddRecipeButton_Clicked(object sender, EventArgs e) {
+
+        bool answer = await DisplayAlert("Are you sure?", "Are you sure you want to cancel? Progress for this recipe will not be saved.", "Yes", "No");
+
+        if (answer) {
+            await Navigation.PopAsync();
+        }
+
+    }
+
 }

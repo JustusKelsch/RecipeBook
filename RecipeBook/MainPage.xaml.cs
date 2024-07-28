@@ -3,7 +3,7 @@ using RecipeBookLibrary.Models;
 using RecipeBookLibrary.ViewModels;
 
 namespace RecipeBook {
-    public partial class MainPage : ContentPage, ISaveRecipe {
+    public partial class MainPage : ContentPage{
 
         RecipeViewModel recipes = new RecipeViewModel();
 
@@ -11,10 +11,6 @@ namespace RecipeBook {
             InitializeComponent();
             // TODO - Grab all recipes from a DataBase
             BindingContext = recipes;
-        }
-
-        public void SaveRecipe(RecipeModel recipe) {
-            recipes.Add(recipe);
         }
 
         private void AddNewRecipeButton_Clicked(object sender, EventArgs e) {

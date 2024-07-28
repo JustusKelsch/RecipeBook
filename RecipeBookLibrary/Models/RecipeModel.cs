@@ -10,11 +10,13 @@ namespace RecipeBookLibrary.Models {
     public class RecipeModel {
 
         MeasurementOptions measurements = new MeasurementOptions();
+
+        public int Id { get; set; }
         public string RecipeName { get; set; }
-        public ObservableCollection<string> Ingredients { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<IngredientModel> Ingredients { get; set; } = new ObservableCollection<IngredientModel>();
         public ObservableCollection<string> Directions { get; set; } = new ObservableCollection<string>();
 
-        public ObservableCollection<string> IngredientCollection {
+        public ObservableCollection<IngredientModel> IngredientCollection {
 
             get { return Ingredients; }
             set { Ingredients = value; }
