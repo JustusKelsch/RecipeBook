@@ -8,7 +8,7 @@ namespace RecipeBookLibrary.Models {
     public class IngredientModel {
 
         public int Id { get; set; }
-        public int Amount { get; set; }
+        public double Amount { get; set; }
         public string Measurement { get; set; }
         public string Ingredient { get; set; }
 

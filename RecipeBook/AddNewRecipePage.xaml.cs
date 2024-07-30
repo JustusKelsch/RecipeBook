@@ -10,7 +10,7 @@ namespace RecipeBook;
 public partial class AddNewRecipePage : ContentPage {
 
     private RecipeModel recipe = new RecipeModel();
-    private string measurement = string.Empty;
+
 
     public AddNewRecipePage()
 	{
@@ -21,10 +21,10 @@ public partial class AddNewRecipePage : ContentPage {
 
     private void AddIngredientButton_Clicked(object sender, EventArgs e) {
 
-        bool isNum = int.TryParse(IngredientsAmountEntry.Text, out int result);
-        if (!isNum || string.IsNullOrWhiteSpace(IngredientsAmountEntry.Text)) {
+        string measurement = (string)MeasurmentPicker.SelectedItem;
+        if (string.IsNullOrWhiteSpace((string)AmountPicker.SelectedItem)) {
 
-            DisplayAlert("Amount must be a number", "Please enter a number.", "OK");
+            DisplayAlert("Amount Not Selected", "Please select an amount.", "OK");
 
         }
         else if (string.IsNullOrWhiteSpace(measurement)) {
@@ -39,10 +39,11 @@ public partial class AddNewRecipePage : ContentPage {
         }
         else {
 
-            string formattedMeasurement = measurement.Substring(0, measurement.Length - 3);
-            if (result == 1) {
+            string formattedMeasurement = measurement.Substring(0, measurement.Length -3);
+            double numAmount = NumConverter((string)AmountPicker.SelectedItem);
+            if (numAmount <= 1) {
                 recipe.Ingredients.Add(new IngredientModel {
-                    Amount = result,
+                    Amount = numAmount,
                     Measurement = formattedMeasurement,
                     Ingredient = IngredientsEntry.Text
 
@@ -51,7 +52,7 @@ public partial class AddNewRecipePage : ContentPage {
             }
             else {
                 recipe.Ingredients.Add(new IngredientModel {
-                    Amount = result,
+                    Amount = numAmount,
                     Measurement = $"{formattedMeasurement}s",
                     Ingredient = IngredientsEntry.Text
 
@@ -59,11 +60,23 @@ public partial class AddNewRecipePage : ContentPage {
 
             }
 
+            AmountPicker.SelectedItem = AmountPicker.Title;
+            MeasurmentPicker.SelectedItem = MeasurmentPicker.Title;
             IngredientsEntry.Text = string.Empty;
-            IngredientsAmountEntry.Text = string.Empty;
-            
 
         }
+
+    }
+
+    private double NumConverter(string selectedItem) {
+        
+        if (selectedItem.Contains("/")) {
+
+            return double.Parse(selectedItem.Substring(0, 1)) / double.Parse(selectedItem.Substring(selectedItem.Length - 1, 1));
+
+        }
+
+        return double.Parse(selectedItem);
 
     }
 
@@ -81,12 +94,6 @@ public partial class AddNewRecipePage : ContentPage {
 
         }
 
-    }
-
-    private void MeasurmentPicker_SelectedIndexChanged(object sender, EventArgs e) {
-        var picker = (Picker)sender;
-        int selectedIndex = picker.SelectedIndex;
-        measurement = picker.Items[selectedIndex];
     }
 
     private void AddRecipeButton_Clicked(object sender, EventArgs e) {

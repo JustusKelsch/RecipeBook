@@ -29,6 +29,8 @@
                    VerticalOptions="Center" 
                    />
                 <Entry x:Name="RecipeNameEntry"
+                       IsSpellCheckEnabled="True"
+                       IsTextPredictionEnabled="True"
                        Placeholder="Recipe Name"
                        PlaceholderColor="Gray"
                        WidthRequest="300"
@@ -41,25 +43,62 @@
                 <Label Text="Ingredient: "
                    VerticalOptions="Center" 
                    />
-                <Entry x:Name="IngredientsAmountEntry"
-                       Placeholder="Amount"
-                       PlaceholderColor="Gray"
-                       WidthRequest="300"
-                       Keyboard="Numeric"
-                       />
-                <Picker x:Name="MeasurmentPicker"
-                        Title="Select a Measurment"
-                        ItemsSource="{Binding MeasurementCollection}"
-                        ItemDisplayBinding="{Binding .}"
-                        SelectedItem="{Binding selectedMeasurement}"
-                        SelectedIndexChanged="MeasurmentPicker_SelectedIndexChanged"
-                        />
+                <HorizontalStackLayout
+                    MaximumWidthRequest="300">
+                    <Picker x:Name="AmountPicker"
+                            Title="Amount"
+                            SelectedItem="{Binding selectedAmount}"
+                            WidthRequest="50">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>1/8</x:String>
+                                <x:String>1/4</x:String>
+                                <x:String>1/3</x:String>
+                                <x:String>1/2</x:String>
+                                <x:String>2/3</x:String>
+                                <x:String>3/4</x:String>
+                                <x:String>1</x:String>
+                                <x:String>2</x:String>
+                                <x:String>3</x:String>
+                                <x:String>4</x:String>
+                                <x:String>5</x:String>
+                                <x:String>6</x:String>
+                                <x:String>7</x:String>
+                                <x:String>8</x:String>
+                                <x:String>9</x:String>
+                                <x:String>10</x:String>
+                                <x:String>11</x:String>
+                                <x:String>12</x:String>
+                                <x:String>13</x:String>
+                                <x:String>14</x:String>
+                                <x:String>15</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Picker x:Name="MeasurmentPicker"
+                            Title="Measurment"
+                            SelectedItem="{Binding selectedMeasurement}"
+                            WidthRequest="62.5">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Cup(s)</x:String>
+                                <x:String>Tbsp(s)</x:String>
+                                <x:String>Tsp(s)</x:String>
+                                <x:String>ounce(s)</x:String>
+                                <x:String>gram(s)</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
 
-                <Entry x:Name="IngredientsEntry"
+                    <Entry x:Name="IngredientsEntry"
+                       IsSpellCheckEnabled="True"
+                       IsTextPredictionEnabled="True"
                        Placeholder="Ingredient"
                        PlaceholderColor="Gray"
-                       WidthRequest="300"
+                       WidthRequest="187.5"
                        />
+                </HorizontalStackLayout>
+
                 <Button x:Name="AddIngredientButton"
                   Text="Add Ingredient"
                   WidthRequest="125"
@@ -76,6 +115,8 @@
                        VerticalOptions="Center" 
                        />
                 <Entry x:Name="DirectionsEntry"
+                       IsSpellCheckEnabled="True"
+                       IsTextPredictionEnabled="True"
                        Placeholder="Direction"
                        PlaceholderColor="Gray"
                        WidthRequest="300"
@@ -104,7 +145,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <HorizontalStackLayout>
-                                <Label Text="{Binding Amount}"
+                                <Label Text="{Binding Amount, StringFormat='{0}'}"
                                        VerticalTextAlignment="Center"
                                        MaximumWidthRequest="300"
                                        />
@@ -151,7 +192,7 @@
                 <Button x:Name="CancelAddRecipeButton"
                         Text="Cancel"
                         WidthRequest="125"
-                        Margin="10 0 0 0"
+                        Margin="10"
                         Clicked="CancelAddRecipeButton_Clicked"
                         />
             </StackLayout>

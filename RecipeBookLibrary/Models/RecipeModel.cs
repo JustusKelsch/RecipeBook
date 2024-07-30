@@ -9,8 +9,6 @@ using static System.Net.Mime.MediaTypeNames;
 namespace RecipeBookLibrary.Models {
     public class RecipeModel {
 
-        MeasurementOptions measurements = new MeasurementOptions();
-
         public int Id { get; set; }
         public string RecipeName { get; set; }
         public ObservableCollection<IngredientModel> Ingredients { get; set; } = new ObservableCollection<IngredientModel>();
@@ -27,12 +25,6 @@ namespace RecipeBookLibrary.Models {
 
             get { return Directions; }
             set { Directions = value; }
-
-        }
-
-        public List<string> MeasurementCollection {
-
-            get { return measurements.measurementsOptions; }
 
         }
     }
