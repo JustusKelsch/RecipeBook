@@ -120,7 +120,7 @@
                     <Label Text="Ingredients"
                        HorizontalTextAlignment="Center"
                        />
-                    <CollectionView ItemsSource="{Binding IngredientCollection}"
+                    <CollectionView ItemsSource="{Binding IngredientsCollection}"
                                 MinimumHeightRequest="50"
                                 Background="LightGray"
                                 >

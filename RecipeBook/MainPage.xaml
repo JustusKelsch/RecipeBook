@@ -22,7 +22,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
         </Grid>
-        <CollectionView ItemsSource="{Binding RecipeCollection}"
+        <CollectionView ItemsSource="{Binding RecipesCollection}"
                         SelectionMode="Single"
                         WidthRequest="300"
                         Grid.Column="1"

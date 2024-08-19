@@ -1,22 +1,33 @@
 ﻿using RecipeBookLibrary;
 using RecipeBookLibrary.Models;
 using RecipeBookLibrary.ViewModels;
+using System;
+using System.Collections.ObjectModel;
+using static System.Net.WebRequestMethods;
 
 namespace RecipeBook {
     public partial class MainPage : ContentPage{
 
-        RecipeViewModel recipes = new RecipeViewModel();
-
+        private RecipesViewModel recipes = new RecipesViewModel();
         public MainPage() {
             InitializeComponent();
+            recipes.Add(new RecipeModel {
+                RecipeName = "Test",
+                Ingredients = [new IngredientModel {
+                    Amount = 1,
+                    Measurement = "Cup",
+                    Ingredient = "Flour"
+                }],
+                Directions = ["Cook"]
+            });
             // TODO - Grab all recipes from a DataBase
             BindingContext = recipes;
         }
 
-        private void AddNewRecipeButton_Clicked(object sender, EventArgs e) {
+        private async void AddNewRecipeButton_Clicked(object sender, EventArgs e) {
 
             AddNewRecipePage recipePage = new AddNewRecipePage();
-            Navigation.PushAsync(recipePage);
+            await Navigation.PushAsync(recipePage);
 
         }
     }

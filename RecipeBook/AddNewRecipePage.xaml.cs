@@ -9,9 +9,8 @@ namespace RecipeBook;
 
 public partial class AddNewRecipePage : ContentPage {
 
-    private RecipeModel recipe = new RecipeModel();
-
-
+    private RecipeViewModel recipe = new RecipeViewModel();
+    
     public AddNewRecipePage()
 	{
 		InitializeComponent();
@@ -42,20 +41,18 @@ public partial class AddNewRecipePage : ContentPage {
             string formattedMeasurement = measurement.Substring(0, measurement.Length -3);
             double numAmount = NumConverter((string)AmountPicker.SelectedItem);
             if (numAmount <= 1) {
-                recipe.Ingredients.Add(new IngredientModel {
+                recipe.IngredientsCollection.Add(new IngredientModel {
                     Amount = numAmount,
                     Measurement = formattedMeasurement,
                     Ingredient = IngredientsEntry.Text
-
                 });
 
             }
             else {
-                recipe.Ingredients.Add(new IngredientModel {
+                recipe.IngredientsCollection.Add(new IngredientModel {
                     Amount = numAmount,
                     Measurement = $"{formattedMeasurement}s",
                     Ingredient = IngredientsEntry.Text
-
                 });
 
             }
@@ -89,35 +86,35 @@ public partial class AddNewRecipePage : ContentPage {
         }
         else {
 
-            recipe.Directions.Add(DirectionsEntry.Text);
+            recipe.DirectionsCollection.Add(DirectionsEntry.Text);
             DirectionsEntry.Text = string.Empty;
 
         }
 
     }
 
-    private void AddRecipeButton_Clicked(object sender, EventArgs e) {
+    private async void AddRecipeButton_Clicked(object sender, EventArgs e) {
 
         if (string.IsNullOrWhiteSpace(RecipeNameEntry.Text)) {
 
-            DisplayAlert("No Recipe Name", "Please enter a Recipe Name.", "OK");
+            await DisplayAlert("No Recipe Name", "Please enter a Recipe Name.", "OK");
 
         }
-        else if (recipe.Ingredients.Count == 0) {
+        else if (recipe.IngredientsCollection.Count == 0) {
 
-            DisplayAlert("No Ingredients", "Please enter some Ingredients.", "OK");
+            await DisplayAlert("No Ingredients", "Please enter some Ingredients.", "OK");
 
         }
-        else if (recipe.Directions.Count == 0) {
+        else if (recipe.DirectionsCollection.Count == 0) {
 
-            DisplayAlert("No Directions", "Please enter some Directions.", "OK");
+            await DisplayAlert("No Directions", "Please enter some Directions.", "OK");
 
         }
         else {
 
             recipe.RecipeName = RecipeNameEntry.Text;
             // TODO - Add new recipe to a DataBase
-            Navigation.PopAsync();
+            await Navigation.PopAsync();
 
         }
 
