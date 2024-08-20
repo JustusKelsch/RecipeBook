@@ -10,11 +10,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBook", "RecipeBook\Re
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBookLibrary", "RecipeBookLibrary\RecipeBookLibrary.csproj", "{5DE72004-D850-439B-811A-540E9566D9B1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeBookAPI", "RecipeBookAPI\RecipeBookAPI.csproj", "{F4CE8C66-F46E-48A3-B82E-03F440926EBB}"
 	ProjectSection(ProjectDependencies) = postProject
-		{5DE72004-D850-439B-811A-540E9566D9B1} = {5DE72004-D850-439B-811A-540E9566D9B1}
+		{F4CE8C66-F46E-48A3-B82E-03F440926EBB} = {F4CE8C66-F46E-48A3-B82E-03F440926EBB}
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBookAPI", "RecipeBookAPI\RecipeBookAPI.csproj", "{F4CE8C66-F46E-48A3-B82E-03F440926EBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

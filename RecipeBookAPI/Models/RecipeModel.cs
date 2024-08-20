@@ -4,14 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace RecipeBookLibrary.Models {
+namespace RecipeBookAPI.Models {
     public class RecipeModel {
 
         public int Id { get; set; }
         public string RecipeName { get; set; }
-        public ObservableCollection<IngredientModel> Ingredients { get; set; } = new ObservableCollection<IngredientModel>();
-        public ObservableCollection<string> Directions { get; set; } = new ObservableCollection<string>();
+        public List<IngredientModel> Ingredients { get; set; } = new List<IngredientModel>();
+        public List<DirectionModel> Directions { get; set; } = new List<DirectionModel>();
     }
 }

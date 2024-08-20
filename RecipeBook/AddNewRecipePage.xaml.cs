@@ -1,6 +1,6 @@
 
 using RecipeBookLibrary;
-using RecipeBookLibrary.Models;
+using RecipeBookAPI.Models;
 using RecipeBookLibrary.ViewModels;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

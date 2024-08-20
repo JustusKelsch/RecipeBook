@@ -1,5 +1,5 @@
 ﻿using RecipeBookLibrary;
-using RecipeBookLibrary.Models;
+using RecipeBookAPI.Models;
 using RecipeBookLibrary.ViewModels;
 using System;
 using System.Collections.ObjectModel;
@@ -18,7 +18,9 @@ namespace RecipeBook {
                     Measurement = "Cup",
                     Ingredient = "Flour"
                 }],
-                Directions = ["Cook"]
+                Directions = [new DirectionModel {
+                    Direction = "Cook"
+                }],
             });
             // TODO - Grab all recipes from a DataBase
             BindingContext = recipes;
